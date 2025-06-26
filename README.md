@@ -43,7 +43,7 @@ Or use requirements.txt:\
 Create a .env file in the same directory as NPS01.py or NPS02.py:
 
 ### Required API credentials
-API_USERNAME is only required for NPS01.py\
+API_USERNAME is only required for NPS01.py
 
 `API_USERNAME=your-api-username`\
 `API_PASSWORD=your-api-password`
