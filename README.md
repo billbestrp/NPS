@@ -6,7 +6,7 @@ A real-time file monitoring system that automatically posts artist and track inf
 🎵 Overview\
 The NPS01.py and NPS02.py scripts will monitor a local text file for changes and immediately posts the artist and track information to the RadioPlayer API. This eliminates the need for scheduled polling and provides instant updates whenever your broadcast system updates the now-playing information.
 
-- NPS01/py supports legacy authentication with username:API key combination.\
+- NPS01/py supports legacy authentication with username:API key combination.
 - NPS02.py uses X-API-KEY header authentication instead of basic authentication.
 
 ✨ Features
@@ -29,14 +29,12 @@ The NPS01.py and NPS02.py scripts will monitor a local text file for changes and
 📦 Installation
 
 Clone or download the script\
-`bash  
-Download either NPS01.py or NPS02.py to your desired directory`
+Download either NPS01.py or NPS02.py to your desired directory
 
 Install Python dependencies\
-`bash  
-pip install requests watchdog pytz python-dotenv`
+`pip install requests watchdog pytz python-dotenv`
 
-Or use requirements.txt:
+Or use requirements.txt:\
 `pip install -r requirements.txt`
 
 
@@ -45,13 +43,13 @@ Or use requirements.txt:
 Create a .env file in the same directory as NPS01.py or NPS02.py:
 
 ### Required API credentials
-```API_USERNAME is only required for NPS01.py\
-API_USERNAME=your-api-username\
-API_PASSWORD=your-api-password\```
+API_USERNAME is only required for NPS01.py\
+`API_USERNAME=your-api-username`
+`API_PASSWORD=your-api-password\`
 
 ### Required API configuration  
-```API_ENDPOINT=https://np-ingest.radioplayer.cloud
-RPUID=your-station-id```
+`API_ENDPOINT=https://np-ingest.radioplayer.cloud`
+`RPUID=your-station-id`
 
 ### Required file path (use forward slashes or escaped backslashes)
 `FILE_PATH=C:/path/to/your/now_playing.txt`
@@ -90,26 +88,26 @@ Install NSSM (Non-Sucking Service Manager)\
 Download from: https://nssm.cc/download
 
 ### Install the service
-```nssm install NPS01 "C:\Python\python.exe" "C:\path\to\NPS01.py"\
-nssm set NPS01 AppDirectory "C:\path\to\script\directory"\
-nssm start NPS01```
+`nssm install NPS01 "C:\Python\python.exe" "C:\path\to\NPS01.py"`
+`nssm set NPS01 AppDirectory "C:\path\to\script\directory"`
+`nssm start NPS01`
 
 ## Linux (using systemd)\
 Create /etc/systemd/system/nps01.service:\
-```ini[Unit]\
+`ini[Unit]\
 Description=Now Playing Script v1.0\
-After=network.target
+After=network.target`
 
-[Service]\
+`[Service]\
 Type=simple\
 User=your-user\
 WorkingDirectory=/path/to/script\
 ExecStart=/usr/bin/python3 /path/to/NPS01.py\
 Restart=always\
-RestartSec=10
+RestartSec=10`
 
-[Install]\
-WantedBy=multi-user.target```
+`[Install]\
+WantedBy=multi-user.target`
 
 Enable and start:\
 
@@ -118,8 +116,8 @@ Enable and start:\
 
 📄 File Format
 Your now playing file should contain artist and title information in this format:\
-```Artist: The Beatles\
-Title: Hey Jude```
+`Artist: The Beatles`
+`Title: Hey Jude`
 
 ### Format Rules
 
@@ -131,16 +129,16 @@ Title: Hey Jude```
 
 ### Example Files
 
-```Simple format:\
+`Simple format:\
 Artist: Queen\
-Title: Bohemian Rhapsody```
+Title: Bohemian Rhapsody`
 
 With additional data (ignored):\
-```Station: Example FM\
+`Station: Example FM\
 Artist: Pink Floyd\
 Title: Comfortably Numb\
 Duration: 6:23\
-Album: The Wall```
+Album: The Wall`
 
 📊 Logging\
 NPS01.py / NPS02.py provides comprehensive logging with configurable levels:
