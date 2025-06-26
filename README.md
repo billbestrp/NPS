@@ -1,13 +1,13 @@
-NPS01.py - Now Playing Script #01\
-NPS02.py - Now Playing Script #02
+- NPS01.py - Now Playing Script #01
+- NPS02.py - Now Playing Script #02
 
 A real-time file monitoring system that automatically posts artist and track information to the RadioPlayer API whenever your "now playing" file changes.
 
 🎵 Overview\
 The NPS01.py and NPS02.py scripts will monitor a local text file for changes and immediately posts the artist and track information to the RadioPlayer API. This eliminates the need for scheduled polling and provides instant updates whenever your broadcast system updates the now-playing information.
 
-- NPS01/py supports legacy authentication with username:API key combination.
-- NPS02.py uses X-API-KEY header authentication instead of basic authentication.
+- NPS01/py supports legacy authentication with `username:API key` combination.
+- NPS02.py uses `X-API-KEY` header authentication instead of basic authentication.
 
 ✨ Features
 
@@ -28,8 +28,8 @@ The NPS01.py and NPS02.py scripts will monitor a local text file for changes and
 
 📦 Installation
 
-Clone or download the script\
-Download either NPS01.py or NPS02.py to your desired directory
+- Clone or download the script
+- Download either NPS01.py or NPS02.py to your desired directory
 
 Install Python dependencies\
 `pip install requests watchdog pytz python-dotenv`
@@ -44,6 +44,7 @@ Create a .env file in the same directory as NPS01.py or NPS02.py:
 
 ### Required API credentials
 API_USERNAME is only required for NPS01.py\
+
 `API_USERNAME=your-api-username`\
 `API_PASSWORD=your-api-password`
 
@@ -95,7 +96,7 @@ Download from: https://nssm.cc/download
 `nssm start NPS01`
 
 ## Linux (using systemd)
-Create /etc/systemd/system/nps01.service:\
+Create /etc/systemd/system/nps01.service:
 
 `ini[Unit]`\
 `Description=Now Playing Script v1.0`\
@@ -118,7 +119,7 @@ Enable and start:
 `sudo systemctl start nps01.service`
 
 📄 File Format
-Your now playing file should contain artist and title information in this format:\
+Your now playing file should contain artist and title information in this format:
 
 `Artist: The Beatles`\
 `Title: Hey Jude`
@@ -168,17 +169,17 @@ NPS01.py / NPS02.py provides comprehensive logging with configurable levels:
 ## Common Issues
 "Required environment variable X is not set"
 
-Solution: Ensure your .env file is in the same directory as NPS01.py and contains all required variables\
+Solution: Ensure your .env file is in the same directory as NPS01.py and contains all required variables
 
 ### "File not found" error
 
 Solution: Check that the FILE_PATH in your .env file is correct and the file exists\
-Note: Use forward slashes (/) or escaped backslashes (\\) in Windows paths\
+Note: Use forward slashes (/) or escaped backslashes (\\) in Windows paths
 
 ### "API request failed" errors
 
 Solution: Verify your API credentials and network connectivity\
-Check: Ensure API_USERNAME, API_PASSWORD, and API_ENDPOINT are correct\
+Check: Ensure API_USERNAME, API_PASSWORD, and API_ENDPOINT are correct
 
 ### No API calls being made
 
@@ -189,7 +190,7 @@ Debug: Set LOG_LEVEL=DEBUG to see detailed parsing information
 Windows users should use one of these path formats in their .env file:
 
 ### Forward slashes (recommended)
-`FILE_PATH=C:/path/to/file/test.txt`\
+`FILE_PATH=C:/path/to/file/test.txt`
 
 ### Escaped backslashes
 `FILE_PATH=C:\\path\\to\\file\\test.txt`
@@ -235,8 +236,8 @@ NPS01.py / NPS02.py integrates with the RadioPlayer API using the following endp
 - artist: URL-encoded artist name
 
 ### Authentication
-- NPS01.py uses HTTP Basic Authentication with your API username and password.\
-- NPS02.py uses X-API-KEY header authentication instead of basic authentication.
+- NPS01.py uses HTTP Basic Authentication with your API username and password
+- NPS02.py uses X-API-KEY header authentication instead of basic authentication
 
 🤝 Contributing
 
@@ -249,7 +250,7 @@ NPS01.py / NPS02.py integrates with the RadioPlayer API using the following endp
 📝 License\
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-🆘 Support\
+🆘 Support
 
 For support, please:
 
