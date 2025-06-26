@@ -78,24 +78,25 @@ Basic Usage
 
 Run the script:\
 `python NPS01.py`\
-or
-`python NPS01.py`
+or\
+`python NPS02.py`
 
 
 ### Running as a Service
-For production use, consider running NPS01.py as a system service:
+For production use, consider running NPS01.py/NPS02.py as a system service:
 
 ## Windows (using NSSM)
 Install NSSM (Non-Sucking Service Manager)\
 Download from: https://nssm.cc/download
 
 ### Install the service
-`nssm install NPS01 "C:\Python\python.exe" "C:\path\to\NPS01.py"`
-`nssm set NPS01 AppDirectory "C:\path\to\script\directory"`
+`nssm install NPS01 "C:\Python\python.exe" "C:\path\to\NPS01.py"`\
+`nssm set NPS01 AppDirectory "C:\path\to\script\directory"`\
 `nssm start NPS01`
 
 ## Linux (using systemd)
 Create /etc/systemd/system/nps01.service:\
+
 `ini[Unit]`\
 `Description=Now Playing Script v1.0`\
 `After=network.target`
@@ -118,6 +119,7 @@ Enable and start:
 
 📄 File Format
 Your now playing file should contain artist and title information in this format:\
+
 `Artist: The Beatles`\
 `Title: Hey Jude`
 
@@ -140,24 +142,24 @@ With additional data (ignored):\
 `Artist: Pink Floyd`\
 `Title: Comfortably Numb`\
 `Duration: 6:23`\
-Album: The Wall`
+`Album: The Wall`
 
 📊 Logging\
 NPS01.py / NPS02.py provides comprehensive logging with configurable levels:
 
 ### Log Levels
 
-- DEBUG: Detailed information for debugging (API URLs, file content, etc.)
+- DEBUG: Detailed information for debugging (API URLs, file content, etc)
 - INFO: General operational information (file changes, successful posts)
 - WARNING: Warning messages (missing data, file issues)
 - ERROR: Error conditions (API failures, file access errors)
 
 ### Example Log Output
 
-2025-06-10 14:30:15 - INFO - Started monitoring: C:\Users\BillBest\test.txt\
+2025-06-10 14:30:15 - INFO - Started monitoring: C:\path\to\file\test.txt\
 2025-06-10 14:30:15 - INFO - Initial file content - Artist: 'Queen', Title: 'Bohemian Rhapsody'\
 2025-06-10 14:30:15 - INFO - Successfully posted: Queen - Bohemian Rhapsody\
-2025-06-10 14:32:45 - INFO - File changed: C:\Users\BillBest\test.txt\
+2025-06-10 14:32:45 - INFO - File changed: C:\path\to\file\test.txt\
 2025-06-10 14:32:45 - INFO - Extracted - Artist: 'The Beatles', Title: 'Hey Jude'\
 2025-06-10 14:32:45 - INFO - Successfully posted: The Beatles - Hey Jude
 
@@ -187,7 +189,7 @@ Debug: Set LOG_LEVEL=DEBUG to see detailed parsing information
 Windows users should use one of these path formats in their .env file:
 
 ### Forward slashes (recommended)
-`FILE_PATH=C:/path/to/file/test.txt\`
+`FILE_PATH=C:/path/to/file/test.txt`\
 
 ### Escaped backslashes
 `FILE_PATH=C:\\path\\to\\file\\test.txt`
@@ -233,8 +235,8 @@ NPS01.py / NPS02.py integrates with the RadioPlayer API using the following endp
 - artist: URL-encoded artist name
 
 ### Authentication
-NPS01.py uses HTTP Basic Authentication with your API username and password.\
-NPS02.py uses X-API-KEY header authentication instead of basic authentication.
+- NPS01.py uses HTTP Basic Authentication with your API username and password.\
+- NPS02.py uses X-API-KEY header authentication instead of basic authentication.
 
 🤝 Contributing
 
@@ -248,6 +250,7 @@ NPS02.py uses X-API-KEY header authentication instead of basic authentication.
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 🆘 Support\
+
 For support, please:
 
 1. Check the troubleshooting section above
