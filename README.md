@@ -44,46 +44,48 @@ Create a .env file in the same directory as NPS01.py or NPS02.py:
 
 ### Required API credentials
 API_USERNAME is only required for NPS01.py\
-`API_USERNAME=your-api-username`
-`API_PASSWORD=your-api-password\`
+`API_USERNAME=your-api-username`\
+`API_PASSWORD=your-api-password`
 
 ### Required API configuration  
-`API_ENDPOINT=https://np-ingest.radioplayer.cloud`
+`API_ENDPOINT=https://np-ingest.radioplayer.cloud`\
 `RPUID=your-station-id`
 
 ### Required file path (use forward slashes or escaped backslashes)
 `FILE_PATH=C:/path/to/your/now_playing.txt`
 
 ### Optional configuration
-TIMEZONE=UTC\
-LOG_LEVEL=INFO
+`TIMEZONE=UTC`\
+`LOG_LEVEL=INFO`
 
 ## Configuration Options
 
-|   Variable   | Required |           Description          |              Example                 | 
-|:-------------|:--------:|:-------------------------------|:-------------------------------------|
-| API_USERNAME |    ✅    | RadioPlayer API username       | apiuser@example.com                  | 
-| API_PASSWORD |    ✅    | RadioPlayer API password/token | abc123-def456-ghi789                 |
-| API_ENDPOINT |    ✅    | RadioPlayer API endpoint URL   | https://np-ingest.radioplayer.cloud  |
-| RPUID        |    ✅    | Your RadioPlayer station ID    | 999999                               | 
-| FILE_PATH    |    ✅    | Path to your now playing file  | C:/broadcast/nowplaying.txt          |
-| TIMEZONE     |    ❌    | Timezone for timestamps        | UTC, America/New_York, Europe/London |
-| LOG_LEVEL    |    ❌    | Logging verbosity              | DEBUG, INFO, WARNING, ERROR          |
+|   Variable   | Required |           Description          |              Example                   | 
+|:-------------|:--------:|:-------------------------------|:---------------------------------------|
+| API_USERNAME |    ✅    | RadioPlayer API username       | apiuser@example.com                    | 
+| API_PASSWORD |    ✅    | RadioPlayer API password/token | abc123-def456-ghi789                   |
+| API_ENDPOINT |    ✅    | RadioPlayer API endpoint URL   | `https://np-ingest.radioplayer.cloud`  |
+| RPUID        |    ✅    | Your RadioPlayer station ID    | 999999                                 | 
+| FILE_PATH    |    ✅    | Path to your now playing file  | `C:/broadcast/nowplaying.txt`          |
+| TIMEZONE     |    ❌    | Timezone for timestamps        | UTC, America/New_York, Europe/London   |
+| LOG_LEVEL    |    ❌    | Logging verbosity              | DEBUG, INFO, WARNING, ERROR            |
 
 🚀 Usage\
 Basic Usage
 
-Set up your .env file with the required configuration\
-Ensure your now playing file exists and contains the expected format
+- Set up your .env file with the required configuration
+- Ensure your now playing file exists and contains the expected format
 
 Run the script:\
+`python NPS01.py`\
+or
 `python NPS01.py`
 
 
 ### Running as a Service
 For production use, consider running NPS01.py as a system service:
 
-## Windows (using NSSM)\
+## Windows (using NSSM)
 Install NSSM (Non-Sucking Service Manager)\
 Download from: https://nssm.cc/download
 
@@ -92,31 +94,31 @@ Download from: https://nssm.cc/download
 `nssm set NPS01 AppDirectory "C:\path\to\script\directory"`
 `nssm start NPS01`
 
-## Linux (using systemd)\
+## Linux (using systemd)
 Create /etc/systemd/system/nps01.service:\
-`ini[Unit]\
-Description=Now Playing Script v1.0\
-After=network.target`
+`ini[Unit]`\
+`Description=Now Playing Script v1.0`\
+`After=network.target`
 
-`[Service]\
-Type=simple\
-User=your-user\
-WorkingDirectory=/path/to/script\
-ExecStart=/usr/bin/python3 /path/to/NPS01.py\
-Restart=always\
-RestartSec=10`
+`[Service]`\
+`Type=simple`\
+`User=your-user`\
+`WorkingDirectory=/path/to/script`\
+`ExecStart=/usr/bin/python3 /path/to/NPS01.py`\
+`Restart=always`\
+`RestartSec=10`
 
-`[Install]\
-WantedBy=multi-user.target`
+`[Install]`\
+`WantedBy=multi-user.target`
 
-Enable and start:\
+Enable and start:
 
-`sudo systemctl enable nps01.service`
+`sudo systemctl enable nps01.service`\
 `sudo systemctl start nps01.service`
 
 📄 File Format
 Your now playing file should contain artist and title information in this format:\
-`Artist: The Beatles`
+`Artist: The Beatles`\
 `Title: Hey Jude`
 
 ### Format Rules
@@ -129,15 +131,15 @@ Your now playing file should contain artist and title information in this format
 
 ### Example Files
 
-`Simple format:\
-Artist: Queen\
-Title: Bohemian Rhapsody`
+`Simple format:`\
+`Artist: Queen`\
+`Title: Bohemian Rhapsody`
 
 With additional data (ignored):\
-`Station: Example FM\
-Artist: Pink Floyd\
-Title: Comfortably Numb\
-Duration: 6:23\
+`Station: Example FM`\
+`Artist: Pink Floyd`\
+`Title: Comfortably Numb`\
+`Duration: 6:23`\
 Album: The Wall`
 
 📊 Logging\
@@ -187,7 +189,7 @@ Windows users should use one of these path formats in their .env file:
 ### Forward slashes (recommended)
 `FILE_PATH=C:/path/to/file/test.txt\`
 
-### Escaped backslashes\
+### Escaped backslashes
 `FILE_PATH=C:\\path\\to\\file\\test.txt`
 
 ### Raw string (if setting via Python)
