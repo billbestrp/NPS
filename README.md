@@ -62,7 +62,18 @@ FILE_PATH=C:/path/to/your/now_playing.txt
 TIMEZONE=UTC
 LOG_LEVEL=INFO
 Configuration Options
-VariableRequiredDescriptionExampleAPI_USERNAME✅RadioPlayer API usernameapiuser@example.comAPI_PASSWORD✅RadioPlayer API password/tokenabc123-def456-ghi789API_ENDPOINT✅RadioPlayer API endpoint URLhttps://np-ingest.radioplayer.cloudRPUID✅Your RadioPlayer station ID999999FILE_PATH✅Path to your now playing fileC:/broadcast/nowplaying.txtTIMEZONE❌Timezone for timestampsUTC, America/New_York, Europe/LondonLOG_LEVEL❌Logging verbosityDEBUG, INFO, WARNING, ERROR
+
+|   Variable   | Required |           Description          |              Example                 | 
+|:------------:|:--------:|:------------------------------:|:------------------------------------:|
+| API_USERNAME |   ✅     | RadioPlayer API username       | apiuser@example.com                  | 
+| API_PASSWORD |   ✅     | RadioPlayer API password/token | abc123-def456-ghi789                 |
+| API_ENDPOINT |   ✅     | RadioPlayer API endpoint URL   | https://np-ingest.radioplayer.cloud  |
+| RPUID        |   ✅     | Your RadioPlayer station ID    | 999999                               | 
+| FILE_PATH    |   ✅     | Path to your now playing file  | C:/broadcast/nowplaying.txt          |
+| TIMEZONE     |   ❌     | Timezone for timestamps        | UTC, America/New_York, Europe/London |
+| LOG_LEVEL    |   ❌     | Logging verbosity              | DEBUG, INFO, WARNING, ERROR          |
+|:------------:|:--------:|:------------------------------:|:------------------------------------:|
+
 🚀 Usage
 Basic Usage
 
