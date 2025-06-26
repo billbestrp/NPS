@@ -1,13 +1,13 @@
 NPS01.py - Now Playing Script #01\
-NPS02.py - Now Playing Script #02\
+NPS02.py - Now Playing Script #02
 
 A real-time file monitoring system that automatically posts artist and track information to the RadioPlayer API whenever your "now playing" file changes.
 
-🎵 Overview
+🎵 Overview\
 The NPS01.py and NPS02.py scripts will monitor a local text file for changes and immediately posts the artist and track information to the RadioPlayer API. This eliminates the need for scheduled polling and provides instant updates whenever your broadcast system updates the now-playing information.
 
-NPS01/py supports legacy authentication with username:API key combination.\
-NPS02.py uses X-API-KEY header authentication instead of basic authentication.
+- NPS01/py supports legacy authentication with username:API key combination.\
+- NPS02.py uses X-API-KEY header authentication instead of basic authentication.
 
 ✨ Features
 
@@ -18,7 +18,7 @@ NPS02.py uses X-API-KEY header authentication instead of basic authentication.
 📝 Comprehensive Logging: Configurable log levels with structured output\
 🔧 Error Handling: Robust error handling for files, network, and API issues\
 ⏱️ Debounced Events: Prevents duplicate API calls from rapid file changes\
-🚀 Startup Processing: Processes existing file content on script startup\
+🚀 Startup Processing: Processes existing file content on script startup
 
 🔧 Requirements
 
@@ -29,40 +29,40 @@ NPS02.py uses X-API-KEY header authentication instead of basic authentication.
 📦 Installation
 
 Clone or download the script\
-bash\
-Download either NPS01.py or NPS02.py to your desired directory\
+`bash\
+Download either NPS01.py or NPS02.py to your desired directory`
 
-Install Python dependencies
-bash
-pip install requests watchdog pytz python-dotenv
+Install Python dependencies\
+`bash\
+pip install requests watchdog pytz python-dotenv`
 
 Or use requirements.txt:
-bash
-pip install -r requirements.txt
+`bash
+pip install -r requirements.txt`
 
 
 ⚙️ Configuration
-Environment Variables
+### Environment Variables
 Create a .env file in the same directory as NPS01.py or NPS02.py:
 
-bash
+`bash
 # Required API credentials
 API_USERNAME is only required for NPS01.py\
 API_USERNAME=your-api-username\
-API_PASSWORD=your-api-password\
+API_PASSWORD=your-api-password\`
 
-# Required API configuration  
+### Required API configuration  
 API_ENDPOINT=https://np-ingest.radioplayer.cloud\
 RPUID=your-station-id
 
-# Required file path (use forward slashes or escaped backslashes)
+### Required file path (use forward slashes or escaped backslashes)
 FILE_PATH=C:/path/to/your/now_playing.txt
 
-# Optional configuration
+### Optional configuration
 TIMEZONE=UTC\
 LOG_LEVEL=INFO\
 
-# Configuration Options
+## Configuration Options
 
 |   Variable   | Required |           Description          |              Example                 | 
 |:-------------|:--------:|:-------------------------------|:-------------------------------------|
@@ -81,11 +81,11 @@ Set up your .env file with the required configuration\
 Ensure your now playing file exists and contains the expected format
 
 Run the script:\
-bash\
-python NPS01.py
+`bash\
+python NPS01.py`
 
 
-Running as a Service\
+### Running as a Service\
 For production use, consider running NPS01.py as a system service:
 
 Windows (using NSSM)\
@@ -93,7 +93,7 @@ bash\
 Install NSSM (Non-Sucking Service Manager)
 Download from: https://nssm.cc/download
 
-# Install the service
+### Install the service
 nssm install NPS01 "C:\Python\python.exe" "C:\path\to\NPS01.py"\
 nssm set NPS01 AppDirectory "C:\path\to\script\directory"\
 nssm start NPS01\
@@ -125,7 +125,7 @@ Your now playing file should contain artist and title information in this format
 Artist: The Beatles\
 Title: Hey Jude\
 
-Format Rules\
+### Format Rules\
 
 - Each line should start with either Artist: or Title:
 - Case-insensitive matching (artist:, ARTIST:, etc. all work)
@@ -133,7 +133,7 @@ Format Rules\
 - Empty lines are ignored
 - Additional content in the file is ignored
 
-Example Files\
+### Example Files\
 
 Simple format:\
 Artist: Queen\
@@ -149,14 +149,14 @@ Album: The Wall\
 📊 Logging\
 NPS01.py / NPS02.py provides comprehensive logging with configurable levels:\
 
-Log Levels
+### Log Levels
 
 - DEBUG: Detailed information for debugging (API URLs, file content, etc.)
 - INFO: General operational information (file changes, successful posts)
 - WARNING: Warning messages (missing data, file issues)
 - ERROR: Error conditions (API failures, file access errors)
 
-Example Log Output
+### Example Log Output
 
 2025-06-10 14:30:15 - INFO - Started monitoring: C:\Users\BillBest\test.txt\
 2025-06-10 14:30:15 - INFO - Initial file content - Artist: 'Queen', Title: 'Bohemian Rhapsody'\
@@ -167,43 +167,43 @@ Example Log Output
 
 🔍 Troubleshooting
 
-Common Issues\
+## Common Issues\
 "Required environment variable X is not set"\
 
 Solution: Ensure your .env file is in the same directory as NPS01.py and contains all required variables\
 
-"File not found" error\
+### "File not found" error\
 
 Solution: Check that the FILE_PATH in your .env file is correct and the file exists\
 Note: Use forward slashes (/) or escaped backslashes (\\) in Windows paths\
 
-"API request failed" errors\
+### "API request failed" errors\
 
 Solution: Verify your API credentials and network connectivity\
 Check: Ensure API_USERNAME, API_PASSWORD, and API_ENDPOINT are correct\
 
-No API calls being made\
+### No API calls being made\
 
 Solution: Check that your file contains the correct format (Artist: and Title: lines)\
 Debug: Set LOG_LEVEL=DEBUG to see detailed parsing information\
 
-File Path Issues (Windows)\
+### File Path Issues (Windows)\
 Windows users should use one of these path formats in their .env file:\
 
-bash
-# Forward slashes (recommended)\
-FILE_PATH=C:/path/to/file/test.txt\
+`bash
+### Forward slashes (recommended)\
+FILE_PATH=C:/path/to/file/test.txt\`
 
-# Escaped backslashes\
+### Escaped backslashes\
 FILE_PATH=C:\\path\\to\\file\\test.txt\
 
-# Raw string (if setting via Python)\
+### Raw string (if setting via Python)\
 FILE_PATH=r"C:\path\to\file\test.txt"\
 
 🏗️ Architecture\
 NPS01.py / NPS02.py follows SOLID principles with a clean, modular architecture:\
 
-Core Components\
+## Core Components\
 
 - Config: Environment variable management and validation
 - FileParser: File parsing and metadata extraction logic
@@ -211,7 +211,7 @@ Core Components\
 - FileChangeHandler: Filesystem event handling and debouncing
 - RadioPlayerMonitor: Main application orchestration
 
-Design Principles\
+## Design Principles\
 
 - Single Responsibility: Each class has one clear purpose
 - Dependency Injection: Clean separation of concerns
@@ -228,16 +228,16 @@ Design Principles\
 📋 API Integration
 NPS01.py / NPS02.py integrates with the RadioPlayer API using the following endpoint format:
 
-POST {API_ENDPOINT}?rpuid={RPUID}&startTime={TIMESTAMP}&title={TITLE}&artist={ARTIST}
+`POST {API_ENDPOINT}?rpuid={RPUID}&startTime={TIMESTAMP}&title={TITLE}&artist={ARTIST}`
 
-Parameters
+## Parameters
 
 - rpuid: Your RadioPlayer station identifier
 - startTime: ISO 8601 timestamp in configured timezone
 - title: URL-encoded track title
 - artist: URL-encoded artist name
 
-Authentication\
+### Authentication\
 NPS01.py uses HTTP Basic Authentication with your API username and password.\
 NPS02.py uses X-API-KEY header authentication instead of basic authentication.\
 
